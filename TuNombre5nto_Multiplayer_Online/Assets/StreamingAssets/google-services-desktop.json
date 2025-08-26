@@ -1,30 +1,3 @@
-{
-  "project_info": {
-    "project_number": "153975111007",
-    "firebase_url": "https://tunombre5nto-default-rtdb.firebaseio.com",
-    "project_id": "tunombre5nto",
-    "storage_bucket": "tunombre5nto.firebasestorage.app"
-  },
-  "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:153975111007:android:f6ed6de875df7f9adf4aea",
-        "android_client_info": {
-          "package_name": "com.Coco.TuNombre5nto"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAA1witNh3Nih1ghpHFAssahjkcenvKYEw"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    }
-  ],
-  "configuration_version": "1"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:55378edc1ebbd4db24a9c41dc36a6330ef0921cbc6aaf1bbb24cc32740d4e338
+size 747
