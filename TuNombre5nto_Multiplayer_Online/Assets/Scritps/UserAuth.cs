@@ -1,43 +1,65 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using Firebase.Extensions;
 using Firebase.Auth;
+using System.Threading.Tasks;
 using Firebase;
 using TMPro;
 
 public class UserAuth : MonoBehaviour
 {
-    [Header("Sign Up")]
-    public TMP_InputField signUpEmail;
-    public TMP_InputField signUpPassword;
-    public TMP_InputField signUpEmailConfirmation;
+    public TMP_InputField emailInput;
+    public TMP_InputField passwordInput;
 
-    public void SignUp()
+    [Header("References")]
+    public UserProfile profile; // arrastra aquí tu objeto UserProfile
+
+    private FirebaseAuth auth;
+
+    private void Awake()
     {
-        FirebaseAuth auth = FirebaseAuth.DefaultInstance;
-        string email = signUpEmail.text;
-        string password = signUpPassword.text;
+        auth = FirebaseAuth.DefaultInstance;
+    }
 
-        auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
+    public async void SignUpButton()
+    {
+        await SignUp(emailInput.text, passwordInput.text);
+    }
+
+    public async Task SignUp(string email, string password)
+    {
+        try
         {
+            AuthResult result = await auth.CreateUserWithEmailAndPasswordAsync(email, password);
+            Debug.Log($"[SignUp] UID: {result.User.UserId} Email: {result.User.Email}");
 
-            if (task.IsCanceled) return;
-            if (task.IsFaulted) return;
+            await result.User.SendEmailVerificationAsync();
+            Debug.Log("[SignUp] Email de verificación enviado.");
 
-            AuthResult result = task.Result;
-            Debug.LogFormat("Firebase  user created succesfully : {0}({1})", result.User.DisplayName, result.User.UserId);
+            profile?.ShowCurrentUserInfo(); // actualiza TMP_Text inmediatamente
+        } catch (System.Exception e)
+        {
+            Debug.LogError("[SignUp] Error: " + e.Message);
+        }
+    }
 
-            if (result.User.IsEmailVerified)
-            {
-                Debug.Log("signup succesful");
-            }
-            else
-            {
-                Debug.Log("need verification");
-                SendEmailVerification();
-            }
-            { }
-        });
+    public async void SignInButton()
+    {
+        await SignIn(emailInput.text, passwordInput.text);
+    }
+
+    public async Task SignIn(string email, string password)
+    {
+        try
+        {
+            AuthResult result = await auth.SignInWithEmailAndPasswordAsync(email, password);
+            Debug.Log($"[SignIn] UID: {result.User.UserId} Email: {result.User.Email}");
+
+            profile?.ShowCurrentUserInfo(); // actualiza TMP_Text inmediatamente
+        } catch (System.Exception e)
+        {
+            Debug.LogError("[SignIn] Error: " + e.Message);
+        }
     }
 
     public void SendEmailVerification()
@@ -224,8 +246,7 @@ public class UserAuth : MonoBehaviour
                     default:
                         break;
                 }
-            }
-            else
+            } else
             {
                 print("Email successfully send");
             }
