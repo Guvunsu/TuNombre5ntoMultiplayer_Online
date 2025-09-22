@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/NetworkMultiplayer.unity
     guid: 1799046c1c4917448b516fafb08d2aa0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ParcialSeptiembre.unity
     guid: 6ea390225946e974f9b854cb5bf33d48
+  - enabled: 1
+    path: Assets/Scenes/Soldier/Soldier.unity
+    guid: 9cbd331a94f008844ba08affec921b9c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
