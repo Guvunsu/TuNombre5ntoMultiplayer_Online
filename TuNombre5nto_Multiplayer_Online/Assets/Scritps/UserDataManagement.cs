@@ -13,6 +13,7 @@ public class UserData
 {
     public string userName;
     public float KD;
+    public int credits;
 }
 
 public class UserDataManagement : MonoBehaviour
@@ -30,7 +31,7 @@ public class UserDataManagement : MonoBehaviour
             Debug.LogError("Not Available" + depedencias);
             return;
         }
-      auth = FirebaseAuth.DefaultInstance;
+        auth = FirebaseAuth.DefaultInstance;
 
         userID = auth.CurrentUser.UserId;
         databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
@@ -73,5 +74,9 @@ public class UserDataManagement : MonoBehaviour
             userID = auth.CurrentUser.UserId;
         }
         return true;
+    }
+    public void PurchaseCredits()
+    {
+        userData.credits += 100;
     }
 }

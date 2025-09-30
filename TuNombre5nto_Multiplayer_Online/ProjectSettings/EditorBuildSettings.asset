@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SkinCard.unity
+    path: Assets/Scenes/SkinCardUpgrade/SkinCard.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 0
-    path: Assets/Scenes/NetworkMultiplayer.unity
+    path: Assets/Scenes/NetworkMultiplayer/NetworkMultiplayer.unity
     guid: 1799046c1c4917448b516fafb08d2aa0
   - enabled: 0
     path: Assets/Scenes/ParcialSeptiembre.unity
