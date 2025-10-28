@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/META Oculus/VR Oculus META.unity
     guid: 9ae1ed097fd7d7544907b12fe4d42977
   - enabled: 1
-    path: Assets/Scenes/TitanVSLegion/StarterAssets/ThirdPersonController/Scenes/Playground.unity
+    path: Assets/Scenes/META Oculus/StarterAssets/ThirdPersonController/Scenes/Playground.unity
     guid: e9017d5f96b9f09489b4b37e1d6eb914
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
