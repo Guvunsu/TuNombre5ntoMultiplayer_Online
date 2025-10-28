@@ -6,8 +6,13 @@ public class MiniTitan : NetworkBehaviour
 {
     [SerializeField] float speed = 2f;
     [SerializeField] float lifetime = 15f;
-    [SerializeField] GameObject explosionPrefab; 
+    [SerializeField] NetworkObject explosionPrefab;
+    public Vector3 dir = Vector3.forward;
 
+    public void Initialize(Vector3 direction)
+    {
+        dir = direction;
+    }
     void Start()
     {
         if (IsServer)
@@ -18,7 +23,7 @@ public class MiniTitan : NetworkBehaviour
 
     void Update()
     {
-        if (!IsServer) return;
+        //if (!IsServer) return;
 
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
@@ -36,7 +41,7 @@ public class MiniTitan : NetworkBehaviour
     {
         if (explosionPrefab != null)
         {
-            GameObject fx = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            NetworkObject fx = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(fx, 2f);
         }
     }
