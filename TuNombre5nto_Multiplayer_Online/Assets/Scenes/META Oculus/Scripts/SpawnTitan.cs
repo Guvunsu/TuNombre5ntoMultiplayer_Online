@@ -34,8 +34,6 @@ public class SpawnTitan : NetworkBehaviour
             }
         }
     }
-
-
     [ServerRpc]
     void SpawnMiniTitansServerRpc(Vector3 pos, Quaternion rot, Vector3 dir, ServerRpcParams rpcParams = default)
     {
