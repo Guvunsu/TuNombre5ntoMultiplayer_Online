@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Unity.Netcode;
 using System.Collections;
 
@@ -33,6 +33,30 @@ public class MiniTitan : NetworkBehaviour
         yield return new WaitForSeconds(lifetime);
         ExplodeClientRpc();
         yield return new WaitForSeconds(0.5f);
+        GetComponent<NetworkObject>().Despawn(true);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!IsServer) return; // Solo el servidor controla la explosión y daño
+
+        if (other.CompareTag("Player"))
+        {
+            // 🧨 Explosión para todos
+            ExplodeClientRpc();
+
+            // 💥 Si quieres hacer daño al jugador (opcional según tu rubrica)
+            if (other.TryGetComponent<Health>(out var health))
+            {
+                health.TakeDamage(10); // lo que tú quieras
+            }
+
+            StartCoroutine(DestroyAfterExplosion());
+        }
+    }
+
+    IEnumerator DestroyAfterExplosion()
+    {
+        yield return new WaitForSeconds(0.3f);
         GetComponent<NetworkObject>().Despawn(true);
     }
 
