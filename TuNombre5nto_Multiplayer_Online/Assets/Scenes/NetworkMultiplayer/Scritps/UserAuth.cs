@@ -15,6 +15,7 @@ public class UserAuth : MonoBehaviour
     public UserProfile profile; // arrastra aquí tu objeto UserProfile
 
     private FirebaseAuth auth;
+    public UIFlowController flow; //para el parcial 3
 
     private void Awake()
     {
@@ -54,7 +55,7 @@ public class UserAuth : MonoBehaviour
         {
             AuthResult result = await auth.SignInWithEmailAndPasswordAsync(email, password);
             Debug.Log($"[SignIn] UID: {result.User.UserId} Email: {result.User.Email}");
-
+            flow.ShowRol();//para el parcial 3
             profile?.ShowCurrentUserInfo(); // actualiza TMP_Text inmediatamente
         } catch (System.Exception e)
         {
