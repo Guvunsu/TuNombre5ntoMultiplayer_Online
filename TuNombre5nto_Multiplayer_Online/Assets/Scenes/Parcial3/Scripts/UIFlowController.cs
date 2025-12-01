@@ -3,7 +3,7 @@ using UnityEngine;
 public class UIFlowController : MonoBehaviour
 {
     public GameObject panelLogin;
-    public GameObject panelRol;
+    //public GameObject panelRol;
     public GameObject panelShop;
     public GameObject panelLoading;
 
@@ -20,7 +20,7 @@ public class UIFlowController : MonoBehaviour
     public void ShowLogin()
     {
         panelLogin.SetActive(true);
-        panelRol.SetActive(false);
+        //panelRol.SetActive(false);
         panelShop.SetActive(false);
         panelLoading.SetActive(false);
     }
@@ -28,7 +28,7 @@ public class UIFlowController : MonoBehaviour
     public void ShowRol()
     {
         panelLogin.SetActive(false);
-        panelRol.SetActive(true);
+        //panelRol.SetActive(true);
         panelShop.SetActive(false);
         panelLoading.SetActive(false);
     }
@@ -48,7 +48,7 @@ public class UIFlowController : MonoBehaviour
     public void ShowShop()
     {
         panelLogin.SetActive(false);
-        panelRol.SetActive(false);
+       // panelRol.SetActive(false);
         panelShop.SetActive(true);
         panelLoading.SetActive(false);
 
@@ -58,7 +58,7 @@ public class UIFlowController : MonoBehaviour
     public void PlayGame()
     {
         panelLogin.SetActive(false);
-        panelRol.SetActive(false);
+       // panelRol.SetActive(false);
         panelShop.SetActive(false);
         panelLoading.SetActive(true);
 

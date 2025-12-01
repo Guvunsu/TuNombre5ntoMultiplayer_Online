@@ -29,7 +29,8 @@ public class ShopItem : MonoBehaviour
         {
             playerId = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
             Debug.Log("UID del jugador: " + playerId);
-        } else
+        }
+        else
         {
             Debug.LogError("No hay usuario autenticado.");
         }
@@ -41,7 +42,8 @@ public class ShopItem : MonoBehaviour
         {
             databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
             firebaseIsReady = true;
-        } else Debug.LogError("Firebase is unvailable");
+        }
+        else Debug.LogError("Firebase is unvailable");
     }
     public void LoadStore()
     {
@@ -67,6 +69,8 @@ public class ShopItem : MonoBehaviour
             UIShopItem uiShopItem = skinInstance.GetComponent<UIShopItem>();
 
             var icon = LoadLocalSprite(shopItem.imagePath);
+
+            Debug.Log($"muestro imagen" + shopItem.imagePath);
 
             uiShopItem.BindData(shopItem, icon);
         }
