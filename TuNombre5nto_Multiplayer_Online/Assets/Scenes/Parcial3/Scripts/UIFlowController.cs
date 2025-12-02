@@ -9,6 +9,7 @@ public class UIFlowController : MonoBehaviour
     public GameObject panelRol;
     public GameObject panelShop;
     public GameObject panelLoading;
+    public GameObject panelGameOver;
 
     public UserAuth auth;
     public UserDataManagement data;
@@ -64,6 +65,7 @@ public class UIFlowController : MonoBehaviour
         panelRol.SetActive(false);
         panelShop.SetActive(false);
         panelLoading.SetActive(false);
+        panelGameOver.SetActive(false);
     }
 
     void ShowMenu()
@@ -72,6 +74,7 @@ public class UIFlowController : MonoBehaviour
         panelRol.SetActive(false);
         panelShop.SetActive(false);
         panelLoading.SetActive(false);
+        panelGameOver.SetActive(false);
     }
 
     public void ShowShop()
@@ -80,6 +83,7 @@ public class UIFlowController : MonoBehaviour
         panelRol.SetActive(false);
         panelShop.SetActive(true);
         panelLoading.SetActive(false);
+        panelGameOver.SetActive(false);
 
         data.SaveProfile();
     }
@@ -90,6 +94,7 @@ public class UIFlowController : MonoBehaviour
         panelRol.SetActive(false);
         panelShop.SetActive(false);
         panelLoading.SetActive(true);
+        panelGameOver.SetActive(false);
     }
 
     public void ShowGame()
@@ -98,6 +103,7 @@ public class UIFlowController : MonoBehaviour
         panelRol.SetActive(false);
         panelShop.SetActive(false);
         panelLoading.SetActive(false);
+        panelGameOver.SetActive(false);
     }
     public void ShowRol()
     {
@@ -105,6 +111,15 @@ public class UIFlowController : MonoBehaviour
         panelRol.SetActive(true);
         panelShop.SetActive(false);
         panelLoading.SetActive(false);
+        panelGameOver.SetActive(false);
+    }
+    public void ShowGameOver()
+    {
+        panelLogin.SetActive(false);
+        panelRol.SetActive(false);
+        panelShop.SetActive(false);
+        panelLoading.SetActive(false);
+        panelGameOver.SetActive(true);
     }
     // ============================================================
     //                     AUTH + BOTONES

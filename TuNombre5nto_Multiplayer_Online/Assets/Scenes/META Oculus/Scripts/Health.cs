@@ -40,7 +40,8 @@ public class Health : NetworkBehaviour
             healthFill.fillAmount = value / maxHealth;
         }
     }
-
+   // [ServerRPC]//HACER QUE EL EVENTO DESDE EL HOST CUANDO EL TITAN RECIBA EL IMPACTO Y DESDE CONSOLA LLAMAR QUE LE HAN PEGADO DESDE EL TITAN
+   // DESDE UN COLLIONENTER LLAMAR EL RPC PARA RECIBIR DAÑO
     [ServerRpc(RequireOwnership = false)]
     public void TakeDamageServerRpc(float amount)
     {
