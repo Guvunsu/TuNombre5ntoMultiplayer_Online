@@ -46,7 +46,7 @@ public class WallLife : NetworkBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionrEnter(Collider other)
     {
         // Los minititanes o proyectiles deben tener este tag
         if (!IsServer) return;
