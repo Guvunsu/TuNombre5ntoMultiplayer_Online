@@ -47,7 +47,7 @@ public class ProjectileSpawnerTitan : NetworkBehaviour
     // scene parcial 3 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Wall"))
+        if (other.CompareTag("Wall")|| other.CompareTag("Player")) // le agrege el legion a ver sdi funciona con 4eso 
         {
             if (other.TryGetComponent<WallLife>(out var wall))
             {

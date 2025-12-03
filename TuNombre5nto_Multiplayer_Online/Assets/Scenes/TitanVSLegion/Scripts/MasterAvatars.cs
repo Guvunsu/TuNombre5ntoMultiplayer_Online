@@ -9,7 +9,7 @@ public class MasterAvatars : NetworkBehaviour
     public GameObject HostTitan, ClientTitan;
     public GameObject HostLegion, ClientLegion;
 
-    // 🔥 NUEVO: punto de respawn para la Legión
+    // 🔥 NUEVO: punto de respawn para la Legión 
     [SerializeField] Transform legionRespawnPoint;
 
     // 🔥 NUEVO: contador de muertes sincronizado
