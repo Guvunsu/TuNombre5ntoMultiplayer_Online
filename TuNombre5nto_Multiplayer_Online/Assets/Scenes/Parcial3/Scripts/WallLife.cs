@@ -4,22 +4,19 @@ using UnityEngine;
 public class WallLife : NetworkBehaviour
 {
     [Header("Wall Settings")]
-    [SerializeField] private int maxHealth = 3;
+    [SerializeField] public int maxHealth = 3;
 
-    // Vida sincronizada entre todos los jugadores
     private NetworkVariable<int> currentHealth = new NetworkVariable<int>();
 
     private void Start()
     {
         if (IsServer)
-        {
             currentHealth.Value = maxHealth;
-        }
 
         currentHealth.OnValueChanged += OnHealthChanged;
     }
 
-    private void OnDestroy()
+    public void OnDestroy()
     {
         currentHealth.OnValueChanged -= OnHealthChanged;
     }
@@ -29,9 +26,6 @@ public class WallLife : NetworkBehaviour
         Debug.Log($"Muro ahora tiene {current} vidas");
     }
 
-    /// <summary>
-    /// El proyectil debe llamar a esto cuando colisiona con el muro.
-    /// </summary>
     [ServerRpc(RequireOwnership = false)]
     public void DamageWallServerRpc(int damage = 1)
     {
@@ -41,17 +35,15 @@ public class WallLife : NetworkBehaviour
 
         if (currentHealth.Value <= 0)
         {
-            Debug.Log("⚠️ El muro fue destruido");
+            Debug.Log("El muro fue destruido");
             gameObject.SetActive(false);
         }
     }
-
-    private void OnCollisionrEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        // Los minititanes o proyectiles deben tener este tag
         if (!IsServer) return;
 
-        if (other.CompareTag("TitanProjectile"))
+        if (collision.collider.CompareTag("Titan"))
         {
             DamageWallServerRpc(1);
         }
