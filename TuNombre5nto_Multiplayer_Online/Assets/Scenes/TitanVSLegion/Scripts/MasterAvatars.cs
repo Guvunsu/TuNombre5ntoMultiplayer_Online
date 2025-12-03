@@ -21,7 +21,6 @@ public class MasterAvatars : NetworkBehaviour
                 if (isOwner) HostTitan.SetActive(true);
                 //escribir el transform de donde aparecera el titan
                 else ClientTitan.SetActive(true); //parcial 2
-                //else ClientLegion.SetActive(true); //parcial 3
                 //escribir el transform de donde aparecera la legion
             }
             //parcial 2 hay que descomentarlo para que funcione

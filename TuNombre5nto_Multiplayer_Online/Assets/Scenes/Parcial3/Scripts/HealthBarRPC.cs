@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class HealthBarRPC : MonoBehaviour
 {
-    //ponerle una camara a la cabeza del titan, cambiar la logic de mi masteravatr en mi prefab para que sea mi hosttitan mi clienttitan
     [Header("Barra De Vida")]
     public Image imageHealthBar;
     public float currentLife = 100f;
