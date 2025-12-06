@@ -49,16 +49,27 @@ public class ProjectileSpawner : NetworkBehaviour
     // scene parcial 3 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Wall"))
-        {
-            if (other.TryGetComponent<WallLife>(out var wall))
-            {
-                wall.DamageWallServerRpc(1);
-            }
+        //if (other.CompareTag("Wall"))
+        //{
+        //    if (other.TryGetComponent<WallLife>(out var wall))
+        //    {
+        //        wall.DamageWallServerRpc(1);
+        //    }
 
-            // destruir mini titán o proyectil
-            if (IsServer)
-                GetComponent<NetworkObject>().Despawn();
+        //    // destruir mini titán o proyectil
+        //    if (IsServer)
+        //        GetComponent<NetworkObject>().Despawn();
+        //}
+        if (other.CompareTag("Titan") && other.TryGetComponent(out HealthBarRPCTitan titanLife))
+        {
+            titanLife.TakeDamageServerRpc(10f);
+
+            if (IsServer) GetComponent<NetworkObject>().Despawn();
+            return;
         }
+
+        // 3. Cualquier otro objeto destruye el proyectil
+        if (IsServer)
+            GetComponent<NetworkObject>().Despawn();
     }
 }

@@ -28,7 +28,7 @@ public class ProjectileSpawnerTitan : NetworkBehaviour
     [ServerRpc]
     void SpawnProjectileServerRpc(Vector3 pos, Quaternion rot, Vector3 dir, ServerRpcParams _ = default)
     {
-        Debug.LogWarning("Detengo el ServerRPC");
+        //Debug.LogWarning("Detengo el ServerRPC");
         var proj = Instantiate(projectilePrefab, pos, rot);
         var simple = proj.GetComponent<NetworketProjectile>();
         if (simple != null) simple.Initialize(dir);
@@ -47,7 +47,7 @@ public class ProjectileSpawnerTitan : NetworkBehaviour
     // scene parcial 3 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Wall")|| other.CompareTag("Player")) // le agrege el legion a ver sdi funciona con 4eso 
+        if (other.CompareTag("Wall")) // le agrege el legion a ver sdi funciona con 4eso 
         {
             if (other.TryGetComponent<WallLife>(out var wall))
             {
@@ -57,6 +57,18 @@ public class ProjectileSpawnerTitan : NetworkBehaviour
             // destruir mini titán o proyectil
             if (IsServer)
                 GetComponent<NetworkObject>().Despawn();
+        }
+        if (other.CompareTag("Player"))
+        {
+            if (other.TryGetComponent<HealthBarRPC>(out var life))
+            {
+                life.TakeDamageServerRpc(10f);
+            }
+
+            if (IsServer)
+                GetComponent<NetworkObject>().Despawn();
+
+            return;
         }
     }
 }

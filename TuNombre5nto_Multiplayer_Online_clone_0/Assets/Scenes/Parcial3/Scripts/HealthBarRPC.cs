@@ -38,7 +38,7 @@ public class HealthBarRPC : NetworkBehaviour
     // Detecta colisiones con bala o minititan
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet") || other.CompareTag("MiniTitan"))
+        if (other.CompareTag("Bullet") || other.CompareTag("Titan"))
         {
             Debug.Log($"Me hizo daño el desgraciado: {other.gameObject.name}");
 
@@ -48,7 +48,7 @@ public class HealthBarRPC : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    void TakeDamageServerRpc(float damage)
+   public void TakeDamageServerRpc(float damage)
     {
         currentLife.Value -= damage;
 

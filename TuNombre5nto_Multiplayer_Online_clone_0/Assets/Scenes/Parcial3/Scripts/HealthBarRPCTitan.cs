@@ -48,7 +48,7 @@ public class HealthBarRPCTitan : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    void TakeDamageServerRpc(float damage)
+  public  void TakeDamageServerRpc(float damage)
     {
         currentLife.Value -= damage;
 

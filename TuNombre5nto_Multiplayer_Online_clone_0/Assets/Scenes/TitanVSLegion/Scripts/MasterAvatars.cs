@@ -9,13 +9,13 @@ public class MasterAvatars : NetworkBehaviour
     public GameObject HostTitan, ClientTitan;
     public GameObject HostLegion, ClientLegion;
 
-    // 🔥 NUEVO: punto de respawn para la Legión 
+    // NUEVO: punto de respawn para la Legión 
     [SerializeField] Transform legionRespawnPoint;
 
-    // 🔥 NUEVO: contador de muertes sincronizado
+    // NUEVO: contador de muertes sincronizado
     private NetworkVariable<int> legionDeaths = new NetworkVariable<int>(0);
 
-    // 🔥 NUEVO: panel game over (solo se activa en la máquina dueña de la Legión)
+    // NUEVO: panel game over (solo se activa en la máquina dueña de la Legión)
     [SerializeField] GameObject gameOverPanel;
 
     void Start()
@@ -42,7 +42,7 @@ public class MasterAvatars : NetworkBehaviour
             }
         }
     }
-    // 🔥 ESTE MÉTODO LO LLAMAS CUANDO LA LEGIÓN MUERE (Desde su script de vida)
+    // ESTE MÉTODO LO LLAMAS CUANDO LA LEGIÓN MUERE (Desde su script de vida)
     [ServerRpc(RequireOwnership = false)]
     public void LegionDiedServerRpc()
     {
@@ -59,7 +59,7 @@ public class MasterAvatars : NetworkBehaviour
         }
     }
 
-    // 🔥 Respawn visual SOLO para el dueño de la Legión
+    // Respawn visual SOLO para el dueño de la Legión
     [ClientRpc]
     private void RespawnLegionClientRpc()
     {
@@ -72,7 +72,7 @@ public class MasterAvatars : NetworkBehaviour
         avatar.position = legionRespawnPoint.position;
     }
 
-    // 🔥 Activar panel final SOLO del dueño de la Legión
+    //  Activar panel final SOLO del dueño de la Legión
     [ClientRpc]
     private void GameOverClientRpc()
     {
